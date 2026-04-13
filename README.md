@@ -1,8 +1,8 @@
 # Repository README Specification (RRS)
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![readme-rfc-validator on npm](https://img.shields.io/npm/v/readme-rfc-validator?label=validator&color=cb3837&logo=npm)](https://www.npmjs.com/package/readme-rfc-validator)
 
-A formal, machine-checkable specification that defines what a well-structured `README.md` must contain, how it must be organized, and what quality thresholds it must meet — for any software repository, from weekend projects to critical infrastructure.
+A formal, machine-checkable specification that defines what a well-structured `README.md` must contain, how it must be organized, and what quality thresholds it must meet — for any software repository, from weekend projects to critical infrastructure. A free CLI tool, [`readme-rfc-validator`](https://www.npmjs.com/package/readme-rfc-validator), is available to run validation checks on your own local machine.
 
 ```markdown
 # My Project
@@ -20,7 +20,7 @@ A tool that does X for Y, so they can Z.        ← Summary (§3.2.2)
 
 ## Summary
 
-The **Repository README Specification** (RRS) is a normative document that codifies best practices for repository-level `README.md` files. It was developed by studying documentation patterns across thousands of open-source projects — identifying what the best READMEs have in common, and what the worst ones consistently lack. The result is a single, versioned reference that maintainers can adopt to ensure their project's front door is never the reason people walk away.
+The **Repository README Specification** (RRS) is a normative document that codifies best practices for repository-level `README.md` files. It was developed by studying documentation patterns across thousands of open-source projects — identifying what the best READMEs have in common, and what the worst ones consistently lack. The result is a single, versioned reference that maintainers can adopt to ensure their project's front door is never the reason people walk away. To check compliance instantly, run the free reference validator on any repository: `npx readme-rfc-validator check .`
 
 ## Why
 
