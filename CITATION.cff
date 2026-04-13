@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "Repository README Specification (RRS)"
+message: >-
+  If you use or reference this specification in your work,
+  please cite it using these metadata.
+type: standard
+authors:
+  - given-names: Wouter
+    family-names: Soudan
+    orcid: ""
+    affiliation: Independent Researcher
+repository-code: "https://github.com/rhythmus/README.md-spec"
+url: "https://github.com/rhythmus/README.md-spec"
+abstract: >-
+  A formal, machine-checkable specification that defines what a
+  well-structured README.md must contain, how it must be organized,
+  and what quality thresholds it must meet — for any software
+  repository, from weekend projects to critical infrastructure.
+keywords:
+  - readme
+  - specification
+  - documentation
+  - open-source
+  - linting
+  - validator
+license: CC-BY-SA-4.0
+version: "1.0.0"
+date-released: "2026-04-13"
