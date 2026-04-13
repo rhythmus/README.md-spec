@@ -1,6 +1,6 @@
 # Repository README Specification (RRS)
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![readme-rfc-validator on npm](https://img.shields.io/npm/v/readme-rfc-validator?label=validator&color=cb3837&logo=npm)](https://www.npmjs.com/package/readme-rfc-validator)
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/) [![readme-rfc-validator on npm](https://img.shields.io/npm/v/readme-rfc-validator?label=validator&color=cb3837&logo=npm)](https://www.npmjs.com/package/readme-rfc-validator)
 
 A formal, machine-checkable specification that defines what a well-structured `README.md` must contain, how it must be organized, and what quality thresholds it must meet — for any software repository, from weekend projects to critical infrastructure. A free CLI tool, [`readme-rfc-validator`](https://www.npmjs.com/package/readme-rfc-validator), is available to run validation checks on your own local machine.
 
@@ -151,4 +151,4 @@ Many thanks to every maintainer who writes clear documentation and every user wh
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for the full text.
+This specification is licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). See [LICENSE](LICENSE) for the full text.
