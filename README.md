@@ -24,7 +24,7 @@ The **README.md Specification** is a normative document that codifies best pract
 
 ## Why
 
-README files are the most-read document in any repository, yet most are written ad hoc, without structure, and drift out of date. There is no widely adopted standard for what a README must include. The RRS fills that gap by defining required sections, recommended sections, ordering rules, formatting constraints, accessibility requirements, and quality metrics — all in a single, versionable specification.
+README files are the most-read document in any repository, yet most are written ad hoc, without structure, and drift out of date. They drift out of date, omit critical sections, bury prerequisites, and fail to orient newcomers. There is no widely adopted standard for what a README must include. The [README.md Specification](README%20Specification.md) fills that gap by defining required sections, recommended sections, ordering rules, formatting constraints, accessibility requirements, and quality metrics — all in a single, versionable specification. The [**free validator CLI**](https://www.npmjs.com/package/readme-rfc-validator) enforces it — automatically, reproducibly, and at any strictness level you choose.
 
 ## Features
 
@@ -109,7 +109,7 @@ Warnings: 2
 
 - [README Specification.md](README%20Specification.md) — the full normative specification
 - [readme-rfc-validator](https://www.npmjs.com/package/readme-rfc-validator) — the reference CLI validator
-- [README.md Validator Playground](https://github.com/rhythmus/README.md-spec) — interactive web-based validation
+- [README.md Validator Playground](https://rhythmus.github.io/README.md-spec/) — interactive web-based validation
 
 ## Limitations
 
@@ -120,8 +120,7 @@ Warnings: 2
 
 ## Support
 
-- Open an issue in the [specification repository](https://github.com/rhythmus/README.md-spec/issues) for errata, clarifications, or proposed amendments.
-- Open an issue in the [validator repository](https://github.com/rhythmus/Repose/issues) for bugs and feature requests related to the reference implementation.
+Open an issue in the [specification repository](https://github.com/rhythmus/README.md-spec/issues) for errata, clarifications, or proposed amendments.
 
 ## Prior Art
 
@@ -142,6 +141,8 @@ Contributions are welcome. The specification evolves through a structured amendm
 All amendments must preserve backward compatibility with the current compliance levels unless a major version bump is explicitly agreed.
 
 ## Acknowledgements
+
+A.M.D.G. — Δόξα τω Θεώ!
 
 Many thanks to every maintainer who writes clear documentation and every user who files an issue when something is missing.
 
