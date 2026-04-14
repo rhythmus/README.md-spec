@@ -1,4 +1,4 @@
-# Repository README Specification (RRS)
+# Repository README.md Specification
 
 A normative, RFC-style specification for the structure, content, and presentation of repository README files, with integrated validation schema and tooling blueprints.
 
@@ -677,7 +677,10 @@ Certain content patterns are discouraged or forbidden due to their negative impa
 #### 3.2.1 Title Section
 
 ##### 3.2.1.1 Naming Requirements
-The README MUST begin with a clear and unambiguous project title. The title MUST uniquely identify the project within its domain and SHOULD be consistent with repository and package names.
+The README MUST begin with a clear and unambiguous project title. The title MUST uniquely identify the project within its domain. For repositories containing a primary manifest (for example `package.json`, `Cargo.toml`, or `go.mod`), the README title MUST match the `name` field defined in that manifest to prevent metadata dissociation.
+
+##### 3.2.1.4 Banner and Logo Placement
+If the README includes a project logo or banner, it MUST be placed immediately after the H1 title and before the summary paragraph. Banners SHOULD not be placed inside their own H2 section.
 
 ##### 3.2.1.2 Subtitle / Tagline Requirements
 A subtitle or tagline SHOULD immediately follow the title and MUST provide a concise description of the project's purpose. It SHOULD be intelligible to readers unfamiliar with the project.
@@ -690,7 +693,7 @@ The title and subtitle SHOULD include domain-relevant terms to support discovera
 #### 3.2.2 Summary / Value Proposition
 
 ##### 3.2.2.1 One-Sentence Rule
-The README MUST include a concise summary that describes what the project is, who it is for, and what benefit it provides. This summary SHOULD be expressed in one sentence where possible.
+The README MUST include a concise summary that describes what the project is, who it is for, and what benefit it provides. This summary SHOULD be expressed in one sentence where possible and MUST NOT exceed **120 characters** to ensure compatibility with package manager manifests and search engine snippets.
 
 ##### 3.2.2.2 Satisfaction Criteria
 The summary requirement is satisfied when **any** of the following conditions holds:
@@ -714,21 +717,27 @@ The summary SHOULD emphasize the primary benefit or distinguishing characteristi
 ##### 3.2.3.1 Code Snippet Requirements
 The README MUST include at least one concrete example demonstrating usage. This example SHOULD be minimal and directly executable where applicable.
 
+Code examples MUST NOT include command prompts (for example `$`, `>`, or `%`) before the command itself. These characters interfere with copy-paste functionality and introduce user friction.
+
 ##### 3.2.3.2 Screenshot / GIF Requirements
 Where visual output or interaction is relevant, the README SHOULD include a screenshot or animated demonstration. Visual elements MUST be purposeful and directly related to functionality.
 
 ##### 3.2.3.3 Output Inclusion
 Examples SHOULD include expected output or observable results, enabling users to verify correct execution.
 
+When a command and its output are shown in the same block, the output SHOULD be commented out (for example, `command # output`) so that the block remains copy-pasteable as a valid executable command.
+
 ---
 
 #### 3.2.4 Installation
 
 ##### 3.2.4.1 Environment Requirements
-The README MUST specify prerequisites required to install or run the project, including runtime environments, dependencies, or system constraints.
+The README MUST specify prerequisites required to install or run the project, including runtime environments, dependencies, or system constraints. This requirement is waived for **Documentation-only** repositories (§11.1.4).
 
 ##### 3.2.4.2 Package Manager Instructions
 Installation instructions MUST be explicit and SHOULD include commands for relevant package managers or distribution methods.
+
+Placeholders that require user substitution (for example branch names, keys, or local paths) MUST be formatted in `UPPERCASE` (for example, `git checkout -b BRANCH-NAME`). Authors SHOULD avoid using `<angle-brackets>` for placeholders as they may conflict with Markdown parsing or platform-specific variables.
 
 ##### 3.2.4.3 Platform Variants
 Where applicable, installation instructions SHOULD address platform-specific differences or constraints.
@@ -741,7 +750,7 @@ Where recurring setup failures are known (permissions, native bindings, SSL prox
 #### 3.2.5 Quickstart
 
 ##### 3.2.5.1 Minimal Path to First Success
-The README MUST provide a quickstart section that enables users to achieve first success with minimal effort.
+The README MUST provide a quickstart section that enables users to achieve first success with minimal effort. This requirement is waived for **Documentation-only** repositories (§11.1.4).
 
 ##### 3.2.5.2 Copy-Paste Guarantee
 Instructions in the quickstart SHOULD be copy-pasteable and MUST avoid implicit steps or assumptions.
@@ -793,7 +802,7 @@ If relevant, the README SHOULD include instructions for reporting security vulne
 #### 3.2.9 License
 
 ##### 3.2.9.1 License Declaration
-The README MUST clearly state the project's license.
+The README MUST clearly state the project's license using a valid **SPDX identifier** (for example `MIT`, `Apache-2.0`, or `GPL-3.0-or-later`) from the [SPDX License List](https://spdx.org/licenses/) to ensure machine-readability by automated compliance tools.
 
 ##### 3.2.9.2 Link to License File
 A link to the full license text MUST be provided.
@@ -868,6 +877,15 @@ Where the project implements an algorithm, protocol, or specification published 
 Where alternative or related implementations exist — including in other programming languages, on other platforms, or within other ecosystems — the README SHOULD **mention** them with enough context (name, ecosystem, or link) for readers to compare or migrate. The section SHOULD remain factual and SHOULD not substitute for the optional **Comparisons** section (§3.4.4) when a dedicated competitive analysis is warranted.
 
 When both this section and **Acknowledgements** (§3.3.9) are present, **Prior art / Related work** SHOULD typically appear **before** Acknowledgements so intellectual lineage precedes gratitude and attribution.
+
+#### 3.3.11 Troubleshooting
+A README SHOULD include an explicit Troubleshooting section (or equivalent such as **Known Issues** or **FAQ**) when common failure modes or environment frictions are identified. This section SHOULD follow a structured pattern of **Problem (Observable Symptom)** → **Cause (Root Reason)** → **Solution (Actionable Resolution)**. This structure minimizes the time users spend searching issue trackers for recurring setup or runtime blockers.
+
+#### 3.3.12 Background
+A README SHOULD include a **Background** section (or equivalent such as **Motivation** or **Context**) that describes the history, intellectual roots, and technical rationale of the project. While the **Summary** (§3.2.2) explains *what* the project is, the **Background** section provides the deeper narrative of *why* it exists and how it differs from similar efforts.
+
+#### 3.3.13 API Reference
+For libraries and frameworks, a README SHOULD include an **API** or **Reference** section that documents the public-facing methods, functions, and interfaces. This section SHOULD provide enough detail for a developer to begin integration without consulting full external documentation, while avoiding exhaustive detail that would belong in a dedicated reference manual.
 
 ---
 
@@ -982,6 +1000,8 @@ English remains the de facto interchange language for open-source collaboration,
 #### 4.5.3 Additional languages (bilingual or localized layers)
 Sections or paragraphs **MAY** appear in another natural language (for example Chinese, Japanese, Spanish, or Arabic) **in addition to** English, for example under headings such as **中文说明** or **Léeme en español**. Such material **SHOULD NOT** introduce facts, constraints, installation steps, licensing terms, or safety information that are **absent** from the English layer. Where both exist, the English layer remains **authoritative** for compliance with this specification.
 
+For repositories providing full translations of the primary documentation, the standard naming convention **SHOULD** follow the pattern `README.{lang}.md` (for example `README.zh-CN.md` or `README.fr.md`), where `{lang}` is a valid BCP 47 language identifier.
+
 #### 4.5.4 Proper nouns, code, and identifiers
 Project names, commands, API identifiers, registry coordinates, and citations **MAY** use non-English forms when they are stable external symbols (for example `npm`, _Kyiv_, or a paper title in French). This exception does not waive §4.5.1 for surrounding explanatory prose.
 
@@ -1030,17 +1050,30 @@ Reference validators **SHOULD** implement the metrics using a maintained statist
 A README MUST be valid GitHub Flavored Markdown (GFM) and render correctly in common contexts such as repository views and package registries. Non-standard extensions MUST NOT be required for correct interpretation of core content.
 
 #### 5.1.2 Heading Structure
-Headings MUST form a clear hierarchical structure using ordered levels. Top-level sections SHOULD use second-level headings, and deeper nesting SHOULD remain shallow to preserve readability and navigability.
+Headings MUST form a clear hierarchical structure using ordered levels. Top-level sections SHOULD use second-level headings, and deeper nesting SHOULD remain shallow to preserve readability and navigability. Authors MUST NOT skip header levels (for example, moving from H2 directly to H4). Every header at the same level on a page MUST be unique. There SHOULD be text content between a header and its subheader to provide transition and context.
 
 #### 5.1.3 Section Anchors
 Headings SHOULD be written to produce stable, predictable anchor links. Section titles MUST avoid unnecessary punctuation or ambiguity that would hinder linking or navigation.
+
+#### 5.1.4 Alerts (GitHub Standard)
+The README SHOULD use GitHub-standard alerts to emphasize information that justifies breaking the flow of content. Alerts MUST follow the syntax `> [!TYPE]` and be restricted to the following types:
+- `[!NOTE]` — Additional context or caveats.
+- `[!TIP]` — Recommendations, best practices, or hints.
+- `[!IMPORTANT]` — Key information required to achieve a goal.
+- `[!WARNING]` — Potential risks to be aware of.
+- `[!CAUTION]` — Dangerous or destructive actions (security/data risk).
+
+Authors SHOULD use alerts sparingly, typically no more than one per section and never consecutively.
+
+#### 5.1.5 Keyboard Shortcuts
+When referring to keyboard shortcuts, authors SHOULD use the `<kbd>` tag (for example, `<kbd>Ctrl</kbd>+<kbd>S</kbd>`). Modifier keys SHOULD be spelled out based on the operating system (for example, `Command` for Mac and `Ctrl` for Windows/Linux).
 
 ---
 
 ### 5.2 Typography and Emphasis
 
 #### 5.2.1 Bold / Italic Usage
-Emphasis SHOULD be used sparingly to highlight key concepts or terms. Excessive or inconsistent emphasis reduces readability and MUST be avoided.
+Emphasis SHOULD be used sparingly to highlight key concepts or terms. To preserve scannability and accessibility, bolding SHOULD be limited to no more than five contiguous words. BoldING MUST NOT be applied to words that already have secondary formatting, such as all-caps placeholders. Emphasis MUST NOT be the sole method of conveying critical meaning.
 
 #### 5.2.2 Inline Code Usage
 Identifiers, commands, file names, and code fragments MUST be formatted using inline code. This formatting SHOULD distinguish executable or literal content from explanatory prose.
@@ -1053,7 +1086,7 @@ Paragraphs SHOULD be concise and limited in length to support scanning. Long blo
 ### 5.3 Code Blocks
 
 #### 5.3.1 Syntax Highlighting
-Code blocks MUST specify a language identifier where applicable to enable syntax highlighting. This improves readability and reduces ambiguity.
+Code blocks MUST specify a language identifier where applicable to enable syntax highlighting. This improves readability and reduces ambiguity. Lines in code blocks SHOULD be limited to approximately 60 characters to avoid horizontal scrolling in browser-based repository views.
 
 #### 5.3.2 Length Constraints
 Code examples SHOULD be minimal and focused. Excessively long code blocks MUST be avoided unless necessary to demonstrate a complete and essential workflow.
@@ -1072,7 +1105,12 @@ Screenshots SHOULD be included where they clarify behavior or output. Images MUS
 Animated GIFs MAY be used to demonstrate interactions or workflows. They SHOULD be short, focused, and optimized to minimize file size and loading time.
 
 #### 5.4.3 Alt Text Requirements
-All images MUST include meaningful alternative text. Alt text SHOULD describe the content and purpose of the image for accessibility and fallback contexts.
+Every image MUST include meaningful alternative text providing a textual equivalent of the visual information. Alt text MUST satisfy the following:
+- **Length.** Between 40 and 150 characters.
+- **Prefix.** SHOULD begin with content type (for example, "Screenshot of..." or "Diagram showing...").
+- **Content.** Focus on the core idea or meaning rather than a literal description of pixels.
+- **Punctuation.** MUST end with a punctuation mark (generally a period).
+- **Redundancy.** MUST NOT start with "Image of..." or "Graphic showing...", as these are redundant for screen readers.
 
 #### 5.4.4 Relative Paths
 Images stored within the repository MUST be referenced using relative paths. This ensures portability across branches and forks.
@@ -1104,6 +1142,8 @@ A reference validator MAY apply a **small positive scoring adjustment** when the
 
 #### 5.6.2 Header cluster — after title, before the summary
 The first natural position for badges is **immediately after the H1 project title** (or title line and optional one-line tagline, if used) and **before** the introductory summary paragraph — that is, still within the identity block but **not** ahead of the title (which remains non-compliant; see §3.5.4 and §8.3.1).
+
+Badges in this cluster MUST be **newline-delimited** (each on its own line in the Markdown source) to prevent horizontal scrolling and ensure predictable rendering across different viewport sizes.
 
 Only the **most important** badges SHOULD appear in this cluster — for example release or package version, SPDX or registry license, primary package-manager or registry link, and at most one or two other high-signal shields. The cluster SHOULD contain **at most about five** images; exceeding that without moving lower-priority badges elsewhere SHOULD be treated as a formatting concern by validators.
 
@@ -1141,7 +1181,7 @@ Emoji are not universally rendered or perceived the same way across platforms, c
 ### 5.8 Navigation Enhancements
 
 #### 5.8.1 Table of Contents
-A table of contents SHOULD be included for longer READMEs. It MUST reflect the actual heading structure and provide accurate links.
+A table of contents SHOULD be included for longer READMEs. If the README exceeds **100 lines** in source length, a table of contents MUST be provided to support navigation. It MUST reflect the actual heading structure and provide accurate links.
 
 #### 5.8.2 Quick Links Sections
 Quick navigation links MAY be included to highlight key sections. These links SHOULD be concise and positioned to improve usability.
@@ -1156,7 +1196,7 @@ Internal links SHOULD reference section anchors consistently. Broken or unstable
 ### 6.1 Tone
 
 #### 6.1.1 Technical Precision
-The README MUST use precise and unambiguous language. Statements SHOULD be verifiable and grounded in actual functionality.
+The README MUST use precise and unambiguous language. Statements SHOULD be verifiable and grounded in actual functionality. Authors SHOULD prioritize clarity and utility over perfect adherence to complex grammatical rules; a README that is technically accurate and easy to follow is superior to one that is linguistically dense but difficult to parse.
 
 #### 6.1.2 Neutral Confidence
 The tone SHOULD be confident and informative without exaggeration. Promotional language that lacks substance is not permitted.
@@ -1172,7 +1212,7 @@ Terms that do not convey measurable or observable meaning MUST be avoided. Claim
 Sentences SHOULD be concise and direct. Complex constructions SHOULD be avoided where simpler alternatives suffice.
 
 #### 6.2.2 Active Voice
-Active voice SHOULD be preferred to improve clarity and readability. Passive constructions SHOULD be used only when appropriate.
+Active voice MUST be used for all procedural steps and instructions (for example, "Install the dependency" instead of "The dependency should be installed"). Active voice SHOULD be preferred elsewhere to improve general clarity and readability. Passive constructions SHOULD be used only when the object being acted upon is more important than the actor.
 
 #### 6.2.3 Declarative Statements
 Statements SHOULD be declarative and informative. Instructions MUST be clear and actionable.
@@ -1189,6 +1229,9 @@ Vague or fashionable terminology that does not add meaning MUST be avoided. Lang
 
 #### 6.3.3 Concrete claims over empty intensifiers
 Marketing-style intensifiers that do not convey verifiable properties — for example **“powerful,” “revolutionary,” “cutting-edge,” “robust,” “elegant,” “enterprise-grade,”** or similar — SHOULD be avoided in favour of **observable claims** (what the software does, for whom, under which constraints, with what measurable outcome). The same rhetorical rule applies to **feature bullets**: each line SHOULD read like a **user-visible benefit** or capability, not a generic compliment that could apply to many unrelated projects (see §8.2.1).
+
+#### 6.3.4 Inclusive Language
+The README MUST use inclusive and respectful language that avoids bias, stereotypes, or exclusionary terminology. Authors SHOULD follow established best practices for bias-free communication (for example, avoiding "master/slave", "whitelist/blacklist", or gendered pronouns where neutral forms suffice). Words SHOULD be chosen to be anti-racist, empathetic, and accessible to a global audience.
 
 ---
 
@@ -1223,6 +1266,9 @@ Animations, including GIFs, MAY be used to demonstrate workflows or interactions
 
 #### 7.1.3 Interactive Media
 Interactive elements, such as embedded demos or external sandbox links, MAY be provided to allow users to experiment with the project. These elements SHOULD be clearly labeled and MUST not replace essential textual instructions.
+
+#### 7.1.4 Call to Action (CTA)
+A README MAY include a Call to Action (CTA) — such as "Get Started", "Try it now", or "Join our Discord" — typically placed near the end of the summary or after a major instructional block. CTAs SHOULD only be included when they lead to a high-value internal or external resource that directly progresses the user journey. Authors SHOULD avoid redundant or multiple CTAs that compete for attention.
 
 ---
 
@@ -1265,6 +1311,12 @@ Sections presented in an order that contradicts the cognitive funnel degrade com
 #### 8.1.3 Overloaded README
 A README that attempts to include all documentation within a single file becomes difficult to navigate and maintain. Excessive length without proper structuring or delegation is discouraged.
 
+#### 8.1.4 Structural Inconsistency
+Skipping header levels (for example, using H4 immediately after H2) or using duplicate headers at the same level disrupts document navigation and table-of-contents generation. Such structural gaps are non-compliant (§5.1.2).
+
+#### 8.1.5 Manifest Dissociation
+A README title that does not match the project name in the primary manifest (for example `package.json`) creates ambiguity and trust issues. This dissociation is non-compliant for projects with explicit metadata (§3.2.1.1).
+
 ---
 
 ### 8.2 Content Anti-patterns
@@ -1299,6 +1351,12 @@ Images that do not contribute to understanding or usability are not permitted. V
 
 #### 8.3.4 Poor Formatting
 Inconsistent headings, lack of spacing, or misuse of emphasis reduces readability. Formatting MUST support structure and comprehension.
+
+#### 8.3.5 Code Block Pollution
+Including shell prompt characters (for example `$`, `>`, or `%`) in code blocks that are intended for copying and execution is non-compliant (§3.2.3.1). These characters interfere with CLI operations and increase user error.
+
+#### 8.3.6 Placeholder Ambiguity
+Using `<angle-brackets>` for placeholders in commands is discouraged as they may be misinterpreted as HTML tags or system variables. Failure to use `UPPERCASE` for user-replaceable fields is non-compliant (§3.2.4.2).
 
 ---
 
@@ -1387,7 +1445,7 @@ When the repository contains a `package.json` file (or an equivalent package man
 Discrepancies between the package manifest and the README erode trust, confuse users who consult both sources, and may cause downstream tooling (registry pages, documentation generators) to display contradictory information. Automated validation tools SHOULD flag such mismatches.
 
 #### 10.1.6 Third-party dependencies
-When the repository declares external third-party packages (for example via the `dependencies` or `devDependencies` fields of `package.json`, or via equivalent sections in other package manifests such as `Cargo.toml`, `requirements.txt`, or `go.mod`), the README MUST clearly disclose that the project relies on external software, and MUST list every such direct dependency by its declared package identifier (the same name used in the manifest).
+When the repository declares external third-party packages (for example via the `dependencies` field of `package.json`, or via equivalent sections in other package manifests such as `Cargo.toml`, `requirements.txt`, or `go.mod`), the README MUST clearly disclose that the project relies on external software, and MUST list every such direct dependency by its declared package identifier (the same name used in the manifest).
 
 Each listed dependency MUST be a hyperlink to a canonical package registry page (for npm packages, `https://www.npmjs.com/package/…`) or to the upstream source repository URL on a forge such as GitHub. Plain-text package names without a URL are insufficient. When authors use raw HTML for these links, the anchor MUST include `target="_blank"` and SHOULD include `rel="noopener noreferrer"` so registry and repository pages open in a new browsing context. Standard Markdown link syntax (`[label](https://…)`) satisfies the linking requirement where HTML `target` cannot be expressed; site generators and hosts that rewrite external links MAY apply `target` behaviour separately.
 
@@ -1427,6 +1485,9 @@ For applications, the README SHOULD highlight functionality, screenshots, and us
 
 #### 11.1.4 Research Projects
 For research projects, the README SHOULD emphasize reproducibility, data sources, and experimental setup. Instructions MUST enable replication of results.
+
+#### 11.1.5 Documentation Repository
+A Documentation Repository (for example a project containing only specifications, meeting notes, or prose) is a specialized project type where **execution** is not the primary goal. Such repositories are **exempt** from mandatory **Installation** (§3.2.4) and **Quickstart** (§3.2.5) sections. To be compliant, they MUST instead provide a clear **Overview** and **Contribution** entry points.
 
 ---
 
@@ -1539,6 +1600,9 @@ greet({ locale: "en-US" });
 // → "Hello"
 ```
 
+> [!TIP]
+> Use the static `greet` method for standard one-off greetings where state persistence is not required.
+
 ### Time-aware Greeting
 
 ```javascript
@@ -1552,12 +1616,13 @@ greet({
 
 ### Custom Data Packs
 
+To load a custom pack, replace `PACK-NAME` with the identifier found in the [Data Pack Registry](https://...):
+
 ```javascript
 greet({
   locale: "el-GR",
-  packs: ["orthodox-calendar"]
+  packs: ["PACK-NAME"]
 });
-// → "Χρόνια πολλά"
 ```
 
 ---
@@ -1570,11 +1635,11 @@ Most applications use static or naive greeting logic that ignores cultural conte
 
 ## Features
 
-- Locale-aware greeting selection
-- Timezone-sensitive output
-- Pluggable calendar and name-day systems
-- Lightweight core with optional datasets
-- Compatible with Node, Deno, Bun, and browsers
+- 🌍 **Locale-aware** — Supports BCP 47 identifiers.
+- 🕒 **Temporal Precision** — Timezone-sensitive output.
+- 🔌 **Extensible** — Pluggable calendar and name-day systems.
+- 📦 **Lightweight** — Minimal core with optional datasets.
+- 🚀 **Polyglot** — Compatible with Node, Deno, Bun, and browsers.
 
 ---
 
@@ -2604,7 +2669,7 @@ This section defines a concrete implementation blueprint for the README validato
 The blueprint assumes a TypeScript-first implementation, Node.js runtime, and npm distribution. It is designed so that the validator can begin as a single package if necessary, while remaining structurally ready for later extraction into a small monorepo.
 
 ##### C.22.2 Package Naming Strategy
-The canonical package names proposed are `@readme-rfc/core` for the validation engine, `@readme-rfc/cli` for the command-line interface, `@readme-rfc/schemas` for machine-readable schema artifacts, and `@readme-rfc/presets` for shareable policy presets. If a single-package release is preferred initially, the canonical name SHOULD be `readme-rfc-validator`.
+The canonical package names proposed are `@rhythmus/readme-validator` for the single-package CLI version, or `@repose/core` (etc.) for a future multi-package architecture. Currently, the canonical name is `@rhythmus/readme-validator`.
 
 The CLI binary name SHOULD be short and memorable. The preferred executable name is `readme-validator`.
 
@@ -2616,7 +2681,7 @@ A second release phase MAY split the codebase into separate packages once the pu
 ##### C.22.4 Recommended Repository Layout
 
 ```text
-readme-rfc-validator/
+@rhythmus/readme-validator/
   README.md
   LICENSE
   CONTRIBUTING.md
@@ -2718,7 +2783,7 @@ readme-rfc-validator/
 
 ```json
 {
-  "name": "readme-rfc-validator",
+  "name": "@rhythmus/readme-validator",
   "version": "0.1.0",
   "description": "CLI and TypeScript validator for repository README compliance",
   "license": "MIT",
@@ -3063,7 +3128,20 @@ export const builtInRules: Rule[] = [
   ruleReadabilityFleschKincaidGrade,
   ruleReadabilityGunningFog,
   ruleReadabilitySmogIndex,
-  ruleReadabilityDaleChall
+  ruleReadabilityDaleChall,
+  ruleHeadingNoSkip,
+  ruleAlertSyntax,
+  ruleKbdUsage,
+  ruleBoldLimit,
+  ruleCodeNoPrompts,
+  rulePlaceholderCaps,
+  ruleAltTextStandard,
+  ruleInclusiveLanguage,
+  ruleManifestSync,
+  ruleSummaryCharLimit,
+  ruleSpdxLicense,
+  ruleTocMandatoryThreshold,
+  ruleI18nNaming
 ];
 ```
 
@@ -3091,6 +3169,19 @@ rules:
   recommend_emoji_in_features: info
   missing_alt_text: warning
   missing_project_status: warning
+  heading_no_skip: error
+  alert_syntax: warning
+  kbd_usage: info
+  bold_limit: warning
+  code_no_prompts: error
+  placeholder_caps: error
+  alt_text_standard: warning
+  inclusive_language: warning
+  manifest_sync: error
+  summary_char_limit: warning
+  spdx_license: error
+  toc_mandatory_threshold: error
+  i18n_naming: info
 
 limits:
   max_badges: 14
@@ -3353,6 +3444,30 @@ All references are expressed in BibTeX-compatible format. Entries include author
   year         = {2024},
   url          = {https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax},
   note         = {Defines GitHub Flavored Markdown capabilities and constraints}
+}
+
+@misc{github_docs_style_guide,
+  author       = {{GitHub}},
+  title        = {GitHub Docs Style Guide},
+  year         = {2024},
+  url          = {https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide},
+  note         = {Normative guidance on technical documentation style, formatting, and naming conventions}
+}
+
+@misc{standard_readme_spec,
+  author       = {Richard Littauer},
+  title        = {Standard README Specification},
+  year         = {2024},
+  url          = {https://github.com/RichardLitt/standard-readme/blob/main/spec.md},
+  note         = {Standard style for README files; provides sharp thresholds for ToC, descriptions, and section ordering}
+}
+
+@misc{spdx_license_list,
+  author       = {{Linux Foundation}},
+  title        = {SPDX License List},
+  year         = {2024},
+  url          = {https://spdx.org/licenses/},
+  note         = {Authoritative list of common open-source licenses and their identifiers for machine-readable declarations}
 }
 
 @misc{npm_readme_docs,

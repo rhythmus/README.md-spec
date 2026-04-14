@@ -1,8 +1,8 @@
 # README.md Specification
 
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/) [![readme-rfc-validator on npm](https://img.shields.io/npm/v/readme-rfc-validator?label=validator&color=cb3837&logo=npm)](https://www.npmjs.com/package/readme-rfc-validator) [![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-pink?logo=github)](https://github.com/sponsors/rhythmus)
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/) [![@rhythmus/readme-validator on npm](https://img.shields.io/npm/v/@rhythmus/readme-validator?label=validator&color=cb3837&logo=npm)](https://www.npmjs.com/package/@rhythmus/readme-validator) [![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-pink?logo=github)](https://github.com/sponsors/rhythmus)
 
-A formal, machine-checkable specification that defines what a well-structured `README.md` must contain, how it must be organized, and what quality thresholds it must meet — for any software repository, from weekend projects to critical infrastructure. A **free CLI** tool, [`readme.md-validator`](https://www.npmjs.com/package/readme-rfc-validator), is available to run validation checks on your own local machine.
+A formal, machine-checkable specification that defines what a well-structured `README.md` must contain, how it must be organized, and what quality thresholds it must meet — for any software repository, from weekend projects to critical infrastructure. A **free CLI** tool, [`@rhythmus/readme-validator`](https://www.npmjs.com/package/@rhythmus/readme-validator), is available to run validation checks on your own local machine.
 
 ```markdown
 # My Project
@@ -20,11 +20,11 @@ A tool that does X for Y, so they can Z.        ← Summary (§3.2.2)
 
 ## Summary
 
-The **README.md Specification** is a normative document that codifies best practices for repository-level `README.md` files. It was developed by studying documentation patterns across thousands of open-source projects — identifying what the best READMEs have in common, and what the worst ones consistently lack. The result is a single, versioned reference that maintainers can adopt to ensure their project's front door is never the reason people walk away. To check compliance instantly, run the free reference validator on any repository: `npx readme-rfc-validator check .`
+The **README.md Specification** is a normative document that codifies best practices for repository-level `README.md` files. Based on extensive research into documentation standards across thousands of open-source repositories — from one-person weekend projects to critical infrastructure maintained by hundreds of contributors — the Repository README Specification codifies what the best READMEs have in common and what the worst ones consistently lack. The result is a single, versioned reference that maintainers can adopt to ensure their project's front door is never the reason people walk away. This repository contains the README.md Specification, and a reference implementation **[@rhythmus/readme-validator](https://www.npmjs.com/package/@rhythmus/readme-validator)** CLI tool.
 
 ## Why
 
-README files are the most-read document in any repository, yet most are written ad hoc, without structure, and drift out of date. They drift out of date, omit critical sections, bury prerequisites, and fail to orient newcomers. There is no widely adopted standard for what a README must include. The [README.md Specification](README%20Specification.md) fills that gap by defining required sections, recommended sections, ordering rules, formatting constraints, accessibility requirements, and quality metrics — all in a single, versionable specification. The [**free validator CLI**](https://www.npmjs.com/package/readme-rfc-validator) enforces it — automatically, reproducibly, and at any strictness level you choose.
+README files are the most-read document in any repository, yet most are written ad hoc, without structure, and drift out of date. They drift out of date, omit critical sections, bury prerequisites, and fail to orient newcomers. There is no widely adopted standard for what a README must include. The [README.md Specification](README%20Specification.md) fills that gap by defining required sections, recommended sections, ordering rules, formatting constraints, accessibility requirements, and quality metrics — all in a single, versionable specification. The [**free validator CLI**](https://www.npmjs.com/package/@rhythmus/readme-validator) enforces it — automatically, reproducibly, and at any strictness level you choose: point it at any README.md and get instant, actionable feedback on structure, completeness, ordering, accessibility, and compliance.
 
 ## Features
 
@@ -38,7 +38,7 @@ README files are the most-read document in any repository, yet most are written 
 
 ## Project Status
 
-Stable — v1.0.0. The specification is versioned and follows semantic versioning. Amendments are tracked in the specification document itself. A reference validator is published as [`readme-rfc-validator`](https://www.npmjs.com/package/readme-rfc-validator) on npm.
+Stable — v1.0.0. The specification is versioned and follows semantic versioning. Amendments are tracked in the specification document itself. A reference validator is published as [`@rhythmus/readme-validator`](https://www.npmjs.com/package/@rhythmus/readme-validator) on npm.
 
 ## Installation
 
@@ -59,7 +59,7 @@ git clone https://github.com/rhythmus/README.md-spec.git
 Read the specification document, then validate your own README against it using the reference validator:
 
 ```bash
-npx readme-rfc-validator check .
+npx @rhythmus/readme-validator check .
 ```
 
 Expected output for a compliant repository:
@@ -79,7 +79,7 @@ Warnings: 2
 
 1. Read [README Specification.md](README%20Specification.md) to understand the structural and quality requirements.
 2. Structure your `README.md` to include the required sections defined in Part 3 of the specification.
-3. Run the [reference validator](https://www.npmjs.com/package/readme-rfc-validator) to check compliance.
+3. Run the [reference validator](https://www.npmjs.com/package/@rhythmus/readme-validator) to check compliance.
 4. Address diagnostics iteratively until you reach your target compliance level.
 
 ### Compliance Levels
@@ -108,7 +108,7 @@ Warnings: 2
 ## Documentation
 
 - [README Specification.md](README%20Specification.md) — the full normative specification
-- [readme-rfc-validator](https://www.npmjs.com/package/readme-rfc-validator) — the reference CLI validator
+- [readme-validator](https://www.npmjs.com/package/@rhythmus/readme-validator) — the reference CLI validator
 - [README.md Validator Playground](https://rhythmus.github.io/README.md-spec/) — interactive web-based validation
 
 ## Limitations
@@ -129,6 +129,8 @@ The RRS was informed by patterns and conventions observed across the open-source
 - [standard-readme](https://github.com/RichardLitt/standard-readme) — a widely cited README layout and checklist for npm-style projects; conceptually overlapping with the RRS required-section taxonomy but without the same formal compliance levels and scoring model.
 - [Make a README](https://www.makeareadme.com/) — a community guide for writing READMEs; provides informal advice where the RRS provides normative, machine-checkable rules.
 - [GitHub community health files](https://docs.github.com/en/communities) — platform-level guidance on README presence and community documents; complementary to, but less prescriptive than, the RRS.
+- [GitHub Docs Style Guide](https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide) — the authoritative source for GitHub's technical documentation standards; informs the RRS formatting, accessibility, and writing style requirements.
+- [SPDX License List](https://spdx.org/licenses/) — the foundational standard for machine-readable license identifiers, providing the normative vocabulary for the RRS License section.
 
 ## Contributing
 
