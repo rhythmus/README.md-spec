@@ -1,6 +1,34 @@
-# Repository README.md Specification
+---
+first published: 2026-04-13
+last updated: 2026-04-14T15:39:38Z
+version: 0.1.0
+---
 
-A normative, RFC-style specification for the structure, content, and presentation of repository README files, with integrated validation schema and tooling blueprints.
+#            Repository README.md Specification (Version 0.1.0)
+
+```text
+   Independent Submission                                        W. Soudan
+   Request for Comments: —                                     Independent
+   Category: Informational                                   14 April 2026
+```
+
+## Abstract
+
+   This document specifies version 0.1.0 of the Repository README.md
+   Specification. It specifies the structure, content, and presentation
+   of repository README files, with integrated validation schema and
+   tooling blueprints.
+
+## Status of This Memo
+
+   This is an Independent Submission for the RFC Series. It represents
+   the consensus of the opensource community. It does not deliver
+   an Internet Standards Track specification; it is published for
+   informational purposes.
+
+## Copyright Notice
+
+   Copyright (c) 2026 Dr Wouter Soudan.  All rights reserved.
 
 ## Table of Contents
 

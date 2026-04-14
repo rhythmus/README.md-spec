@@ -5,17 +5,30 @@
 A formal, machine-checkable specification that defines what a well-structured `README.md` must contain, how it must be organized, and what quality thresholds it must meet — for any software repository, from weekend projects to critical infrastructure. A **free CLI** tool, [`@rhythmus/readme-validator`](https://www.npmjs.com/package/@rhythmus/readme-validator), is available to run validation checks on your own local machine.
 
 ```markdown
-# My Project
+#            Repository README.md Specification (Version 0.1.0)
 
-A tool that does X for Y, so they can Z.        ← Summary (§3.2.2)
+   Independent Submission                                        W. Soudan
+   Request for Comments: —                                     Independent
+   Category: Informational                                   14 April 2026
 
-## Installation                                  ← Required section (§3.2.4)
-## Quickstart                                    ← Required section (§3.2.5)
-## Usage                                         ← Required section (§3.2.6)
-## Documentation                                 ← Required section (§3.2.7)
-## Support                                       ← Required section (§3.2.8)
-## Contact                                       ← Required section (§3.2.10)
-## License                                       ← Required section (§3.2.11)
+## Abstract
+
+   This document specifies version 0.1.0 of the Repository README.md
+   Specification. It specifies the structure, content, and presentation
+   of repository README files, with integrated validation schema and
+   tooling blueprints.
+
+## Status of This Memo
+
+   This is an Independent Submission for the RFC Series. It represents
+   the consensus of the opensource community. It does not deliver
+   an Internet Standards Track specification; it is published for
+   informational purposes.
+
+## Copyright Notice
+
+   Copyright (c) 2026 Dr Wouter Soudan.  All rights reserved.
+
 ```
 
 ## Summary
@@ -91,20 +104,6 @@ Warnings: 2
 | **recommended** | Zero errors; all required sections present with quality thresholds met |
 | **strict** | Zero errors; zero warnings; all rules passing |
 
-### Specification Structure
-
-| Part | Contents |
-| --- | --- |
-| Part 1 | Scope, purpose, and audience |
-| Part 2 | Conformance language (RFC 2119) |
-| Part 3 | Document structure (sections, ordering, content rules) |
-| Part 4 | Content quality (readability, language, length) |
-| Part 5 | Formatting (badges, emoji, code, accessibility) |
-| Part 6 | Repository integration (LICENSE, CONTRIBUTING, CHANGELOG) |
-| Appendix A | Section taxonomy and heading aliases |
-| Appendix B | Scoring model and category weights |
-| Appendix C | Validator architecture and rule engine |
-
 ## Documentation
 
 - [README Specification.md](README%20Specification.md) — the full normative specification
@@ -145,6 +144,8 @@ All amendments must preserve backward compatibility with the current compliance 
 ## Acknowledgements
 
 A.M.D.G. — Δόξα τω Θεώ!
+
+In loving memory of my father, Karel Soudan. Αιωνία η μνήμη! — 14 April 1951
 
 Many thanks to every maintainer who writes clear documentation and every user who files an issue when something is missing.
 
